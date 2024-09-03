@@ -11,6 +11,7 @@
 	justify-content: center;
 	align-items: center;
 	box-shadow: 5px 0px 15px 1px #a1a1a1;
+	z-index: 99999;
 }
 
 .search-bar form,
