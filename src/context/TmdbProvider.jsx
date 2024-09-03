@@ -8,26 +8,14 @@ const API_KEY = "df95467cac1df8a806e1c910ebab2483";
 const BASE_URL = "https://api.themoviedb.org/3";
 
 export const TmdbProvider = ({ children }) => {
-	const [movies, setMovies] = useState([]);
 	const [searchResults, setSearchResults] = useState([]);
 	const [movieDetails, setMovieDetails] = useState(null);
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState(null);
-
-	const fetchPopularMovies = async () => {
-		setLoading(true);
-		try {
-			const response = await fetch(
-				`${BASE_URL}/movie/popular?api_key=${API_KEY}`
-			);
-			const data = await response.json();
-			setMovies(data.results);
-		} catch (err) {
-			setError(err.message);
-		} finally {
-			setLoading(false);
-		}
-	};
+	const [featuredMovies, setFeaturedMovies] = useState([]);
+	const [upcomingMovies, setUpcomingMovies] = useState([]);
+	const [topRatedMovies, setTopRatedMovies] = useState([]);
+	const [trendingMovies, setTrendingMovies] = useState([]);
 
 	const searchMovies = async (query) => {
 		setLoading(true);
@@ -61,21 +49,90 @@ export const TmdbProvider = ({ children }) => {
 		}
 	};
 
+	const fetchFeaturedMovies = async () => {
+		setLoading(true);
+		try {
+			const response = await fetch(
+				`${BASE_URL}/movie/popular?api_key=${API_KEY}`
+			);
+			const data = await response.json();
+			setFeaturedMovies(data.results);
+		} catch (err) {
+			setError(err.message);
+		} finally {
+			setLoading(false);
+		}
+	};
+
+	const fetchUpcomingMovies = async () => {
+		setLoading(true);
+		try {
+			const response = await fetch(
+				`${BASE_URL}/movie/upcoming?api_key=${API_KEY}`
+			);
+			const data = await response.json();
+			setUpcomingMovies(data.results);
+		} catch (err) {
+			setError(err.message);
+		} finally {
+			setLoading(false);
+		}
+	};
+
+	const fetchTopRatedMovies = async () => {
+		setLoading(true);
+		try {
+			const response = await fetch(
+				`${BASE_URL}/movie/top_rated?api_key=${API_KEY}`
+			);
+			const data = await response.json();
+			setTopRatedMovies(data.results);
+		} catch (err) {
+			setError(err.message);
+		} finally {
+			setLoading(false);
+		}
+	};
+
+	const fetchTrendingMovies = async () => {
+		setLoading(true);
+		try {
+			const response = await fetch(
+				`${BASE_URL}/trending/movie/week?api_key=${API_KEY}`
+			);
+			const data = await response.json();
+			setTrendingMovies(data.results);
+		} catch (err) {
+			setError(err.message);
+		} finally {
+			setLoading(false);
+		}
+	};
+
 	useEffect(() => {
-		fetchPopularMovies();
+		fetchFeaturedMovies();
+		fetchUpcomingMovies();
+		fetchTopRatedMovies();
+		fetchTrendingMovies();
 	}, []);
 
 	return (
 		<TmdbContext.Provider
 			value={{
-				movies,
 				searchResults,
 				movieDetails,
 				loading,
 				error,
-				fetchPopularMovies,
+				featuredMovies,
+				upcomingMovies,
+				topRatedMovies,
+				trendingMovies,
 				searchMovies,
 				getMovieDetails,
+				fetchFeaturedMovies,
+				fetchUpcomingMovies,
+				fetchTopRatedMovies,
+				fetchTrendingMovies,
 			}}
 		>
 			{children}

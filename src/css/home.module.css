@@ -57,3 +57,14 @@
 	font-size: 14px;
 	color: #555;
 }
+
+.section {
+	margin-bottom: 10rem;
+}
+
+.section-title {
+	font-size: 1.5rem;
+	font-weight: bold;
+	margin-bottom: 1rem;
+	color: #333;
+}
