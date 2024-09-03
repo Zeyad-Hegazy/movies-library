@@ -1,6 +1,6 @@
 .home-container {
 	max-width: 1200px;
-	margin: 0 auto;
+	margin: 100px auto;
 	padding: 16px;
 }
 
@@ -19,7 +19,7 @@
 .movies-grid {
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-	gap: 16px;
+	gap: 20px;
 }
 
 .movie-card {
