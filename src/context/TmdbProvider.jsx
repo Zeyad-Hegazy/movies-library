@@ -1,4 +1,10 @@
-import { createContext, useContext, useState, useEffect } from "react";
+import {
+	createContext,
+	useContext,
+	useState,
+	useEffect,
+	useCallback,
+} from "react";
 
 const TmdbContext = createContext();
 
@@ -44,11 +50,11 @@ export const TmdbProvider = ({ children }) => {
 		}
 	};
 
-	const getMovieDetails = async (movieId) => {
+	const getMovieDetails = useCallback(async (movieId) => {
 		setLoading(true);
 		try {
 			const response = await fetch(
-				`${BASE_URL}/movie/${movieId}?api_key=${API_KEY}`
+				`${BASE_URL}/movie/${movieId}?api_key=${API_KEY}&append_to_response=credits`
 			);
 			const data = await response.json();
 			setMovieDetails(data);
@@ -57,8 +63,7 @@ export const TmdbProvider = ({ children }) => {
 		} finally {
 			setLoading(false);
 		}
-	};
-
+	}, []);
 	const fetchFeaturedMovies = async () => {
 		setLoading(true);
 		try {

@@ -1,9 +1,17 @@
-import React from "react";
 import styles from "../css/movieCard.module.css";
+import { useNavigate } from "react-router-dom";
 
 const MovieCard = ({ movie }) => {
+	const navigate = useNavigate();
+	const getMovieDateils = (id) => {
+		navigate(`/movie/${id}`);
+	};
+
 	return (
-		<div className={styles["movie-card"]}>
+		<div
+			className={styles["movie-card"]}
+			onClick={() => getMovieDateils(movie.id)}
+		>
 			<img
 				src={"https://image.tmdb.org/t/p/w500/" + movie.poster_path}
 				alt={movie.title}

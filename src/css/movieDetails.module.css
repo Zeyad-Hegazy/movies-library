@@ -1,0 +1,139 @@
+.movie-details-container {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	padding: 20px;
+	background-color: #f0f0f0;
+	color: #333;
+	border-radius: 8px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+	margin: 100px 200px;
+}
+
+.movie-header {
+	display: flex;
+	gap: 20px;
+}
+
+.movie-poster {
+	max-width: 200px;
+	border-radius: 8px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.movie-info {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.movie-title {
+	font-size: 24px;
+	font-weight: bold;
+	margin: 0;
+	margin-bottom: -15px;
+	color: #222;
+}
+
+.movie-title span {
+	margin-left: 20px;
+}
+
+.movie-rating,
+.movie-release-date {
+	margin: 8px 0;
+	font-size: 14px;
+	color: #666;
+}
+
+.genre-list {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.genre-item {
+	margin-right: 5px;
+	font-weight: bold;
+}
+
+.separator {
+	margin-right: 5px;
+}
+
+.watchlist-button {
+	align-self: flex-start;
+	padding: 8px 16px;
+	background-color: #ff4757;
+	color: white;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+.watchlist-button:hover {
+	background-color: #e84118;
+}
+
+.movie-plot {
+	margin-top: 20px;
+}
+
+.movie-plot h3 {
+	font-size: 20px;
+	margin-bottom: 10px;
+	color: #333;
+}
+
+.movie-plot p {
+	line-height: 1.6;
+	color: #444;
+}
+
+.movie-cast {
+	margin-top: 20px;
+}
+
+.movie-cast h3 {
+	font-size: 20px;
+	margin-bottom: 10px;
+	color: #333;
+}
+
+.cast-list {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+	gap: 20px;
+}
+
+.cast-item {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	background-color: #fff;
+	padding: 10px;
+	border-radius: 8px;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.cast-image {
+	width: 80px;
+	height: 80px;
+	object-fit: cover;
+	border-radius: 50%;
+	margin-bottom: 10px;
+	border: 2px solid #ddd;
+}
+
+.cast-name {
+	font-size: 14px;
+	font-weight: bold;
+	margin: 0;
+	color: #222;
+}
+
+.cast-character {
+	font-size: 12px;
+	color: #555;
+}
