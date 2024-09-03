@@ -1,0 +1,22 @@
+.search-container {
+	max-width: 1200px;
+	margin: 100px auto;
+	padding: 16px;
+}
+
+.section {
+	margin-bottom: 10rem;
+}
+
+.section-title {
+	font-size: 1.5rem;
+	font-weight: bold;
+	margin-bottom: 1rem;
+	color: #333;
+}
+
+.movies-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	gap: 20px;
+}

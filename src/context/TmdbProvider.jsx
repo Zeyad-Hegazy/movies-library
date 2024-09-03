@@ -20,6 +20,14 @@ export const TmdbProvider = ({ children }) => {
 	const searchMovies = async (query) => {
 		setLoading(true);
 		try {
+			const cachedResults = localStorage.getItem(`search_${query}`);
+
+			if (cachedResults) {
+				setSearchResults(JSON.parse(cachedResults));
+				setLoading(false);
+				return;
+			}
+
 			const response = await fetch(
 				`${BASE_URL}/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(
 					query
@@ -27,6 +35,8 @@ export const TmdbProvider = ({ children }) => {
 			);
 			const data = await response.json();
 			setSearchResults(data.results);
+
+			localStorage.setItem(`search_${query}`, JSON.stringify(data.results));
 		} catch (err) {
 			setError(err.message);
 		} finally {
