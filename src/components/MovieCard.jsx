@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../css/home.module.css";
+import styles from "../css/movieCard.module.css";
 
 const MovieCard = ({ movie }) => {
 	return (
@@ -10,6 +10,7 @@ const MovieCard = ({ movie }) => {
 				className={styles["movie-image"]}
 			/>
 			<div className={styles["movie-info"]}>
+				{movie.adult && <div className={styles["adult"]}>+18</div>}
 				<h3 className={styles["movie-title"]}>{movie.title}</h3>
 				<p className={styles["movie-date"]}>{movie.release_date}</p>
 				{/* <p className={styles["movie-overview"]}>{movie.overview}</p> */}
