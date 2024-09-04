@@ -22,7 +22,14 @@ export const TmdbProvider = ({ children }) => {
 	const [upcomingMovies, setUpcomingMovies] = useState([]);
 	const [topRatedMovies, setTopRatedMovies] = useState([]);
 	const [trendingMovies, setTrendingMovies] = useState([]);
-
+	const [watchlist, setWatchlist] = useState(() => {
+		const storedWatchlist = localStorage.getItem("watchlist");
+		return storedWatchlist ? JSON.parse(storedWatchlist) : [];
+	});
+	const [watched, setWatched] = useState(() => {
+		const savedWatched = localStorage.getItem("watched");
+		return savedWatched ? JSON.parse(savedWatched) : [];
+	});
 	const searchMovies = async (query) => {
 		setLoading(true);
 		try {
@@ -124,6 +131,34 @@ export const TmdbProvider = ({ children }) => {
 		}
 	};
 
+	const addMovieToWatchlist = (movie) => {
+		const isAlreadyInWatchlist = watchlist.some(
+			(watchlistMovie) => watchlistMovie.id === movie.id
+		);
+
+		if (isAlreadyInWatchlist) {
+			alert("This movie is already in your watchlist.");
+			return;
+		}
+
+		const updatedWatchlist = [...watchlist, movie];
+		setWatchlist(updatedWatchlist);
+		localStorage.setItem("watchlist", JSON.stringify(updatedWatchlist));
+	};
+
+	const removeMovieFromWatchlist = (movieId) => {
+		const updatedWatchlist = watchlist.filter((movie) => movie.id !== movieId);
+		setWatchlist(updatedWatchlist);
+		localStorage.setItem("watchlist", JSON.stringify(updatedWatchlist));
+	};
+
+	const markAsWatched = (movie) => {
+		removeMovieFromWatchlist(movie.id);
+		const updatedWatched = [...watched, movie];
+		setWatched(updatedWatched);
+		localStorage.setItem("watched", JSON.stringify(updatedWatched));
+	};
+
 	useEffect(() => {
 		fetchFeaturedMovies();
 		fetchUpcomingMovies();
@@ -142,12 +177,17 @@ export const TmdbProvider = ({ children }) => {
 				upcomingMovies,
 				topRatedMovies,
 				trendingMovies,
+				watchlist,
+				watched,
 				searchMovies,
 				getMovieDetails,
 				fetchFeaturedMovies,
 				fetchUpcomingMovies,
 				fetchTopRatedMovies,
 				fetchTrendingMovies,
+				addMovieToWatchlist,
+				removeMovieFromWatchlist,
+				markAsWatched,
 			}}
 		>
 			{children}

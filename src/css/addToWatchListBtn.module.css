@@ -1,0 +1,42 @@
+.watchlist-button {
+	width: 12rem;
+	padding: 10px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	margin-right: 10px;
+	transition: background-color 0.3s ease;
+}
+
+.add-to-watchlist {
+	background-color: #28a745;
+	color: white;
+}
+
+.add-to-watchlist:hover {
+	background-color: #218838;
+}
+
+.remove-from-watchlist {
+	background-color: #dc3545;
+	color: white;
+}
+
+.remove-from-watchlist:hover {
+	background-color: #c82333;
+}
+
+.mark-as-watched {
+	background-color: #ffc107;
+	color: black;
+}
+
+.mark-as-watched:hover {
+	background-color: #e0a800;
+}
+
+.mark-as-watched:disabled {
+	background-color: #6c757d;
+	cursor: not-allowed;
+	color: white;
+}

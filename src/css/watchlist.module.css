@@ -1,4 +1,4 @@
-.home-container {
+.watchlist-contanier {
 	max-width: 1200px;
 	margin: 100px auto;
 	padding: 16px;
@@ -12,6 +12,10 @@
 
 .section {
 	margin-bottom: 10rem;
+}
+
+.noMovies {
+	text-align: center;
 }
 
 .section-title {

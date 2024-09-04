@@ -1,11 +1,24 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useTmdb } from "../context/TmdbProvider";
 import styles from "../css/movieDetails.module.css";
+import AddToWatchlist from "./../components/AddToWatchlist";
 
 const MovieDetails = () => {
 	const { movieId } = useParams();
-	const { getMovieDetails, movieDetails, loading } = useTmdb();
+	const {
+		getMovieDetails,
+		movieDetails,
+		loading,
+		addMovieToWatchlist,
+		watchlist,
+		watched,
+		removeMovieFromWatchlist,
+		markAsWatched,
+	} = useTmdb();
+
+	const [isWatchlisted, setIsWatchListed] = useState(false);
+	const [isWatched, setIsWatched] = useState(false);
 
 	useEffect(() => {
 		const fetchMovieDetails = async () => {
@@ -21,8 +34,23 @@ const MovieDetails = () => {
 		}
 	}, [movieId, getMovieDetails]);
 
+	useEffect(() => {
+		if (movieDetails) {
+			setIsWatchListed(watchlist.some((movie) => movie.id === movieDetails.id));
+			setIsWatched(watched.some((movie) => movie.id === movieDetails.id));
+		}
+	}, [movieDetails, watchlist, watched]);
+
 	const handleAddToWatchlist = () => {
-		console.log("Added to watchlist:", movieDetails);
+		addMovieToWatchlist(movieDetails);
+	};
+
+	const handleRemoveFromWatchlist = () => {
+		removeMovieFromWatchlist(movieDetails.id);
+	};
+
+	const handleMarkAsWatched = () => {
+		markAsWatched(movieDetails);
 	};
 
 	if (loading) {
@@ -72,12 +100,13 @@ const MovieDetails = () => {
 						))}
 					</div>
 
-					<button
-						className={styles["watchlist-button"]}
-						onClick={handleAddToWatchlist}
-					>
-						Add to Watchlist
-					</button>
+					<AddToWatchlist
+						isWatchListed={isWatchlisted}
+						isWatched={isWatched}
+						handleAddToWatchlist={handleAddToWatchlist}
+						handleRemoveFromWatchlist={handleRemoveFromWatchlist}
+						handleMarkAsWatched={handleMarkAsWatched}
+					/>
 				</div>
 			</div>
 			<div className={styles["movie-plot"]}>
