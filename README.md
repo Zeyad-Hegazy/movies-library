@@ -9,8 +9,6 @@ This project is a Movie Search Application built with React, utilizing TMDB API 
 - [Setup and Installation](#setup-and-installation)
 - [Usage](#usage)
 - [Project Structure](#project-structure)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Features
 
@@ -50,3 +48,54 @@ Follow these steps to get the project up and running on your local machine.
    ```bash
    npm start
    ```
+
+## Usage
+
+To use the Movie Search Application, follow these steps:
+
+1. **Search for Movies**: Use the search bar on the home page to find movies. Enter a keyword or title, and the app will display matching results from the TMDB API.
+
+2. **View Movie Details**: Click on any movie from the search results to view more details, such as the synopsis, release date, and rating.
+
+3. **Manage Watchlist**: Add movies to your watchlist by clicking the "Add to Watchlist" button on the movie details page. Access your watchlist from the navigation menu to view all your saved movies. You can also remove movies from the watchlist.
+
+4. **Navigate the App**: Use the navigation bar to switch between the home page, search results, and watchlist.
+
+## Project Structure
+
+The project is organized as follows:
+
+```bash
+public
+src/
+├── components/
+    ├── AddToWatchlist.jsx
+    ├── MovieCard.jsx
+    ├── Nav.jsx
+├── context/
+    ├── TMdbProvider.jsx
+├── css/
+    ├── addToWatchListBtn.module.css
+    ├── home.module.css
+    ├── movieCard.module.css
+    ├── movieDetails.module.css
+    ├── nav.module.css
+    ├── searchResult.module.css
+    ├── watchlist.module.css
+├── pages/
+    ├── Home.jsx
+    ├── MovieDetails.jsx
+    ├── SearchResult.jsx
+    ├── Watchlist.jsx
+├── App.jsx
+├── index.css
+├── main.jsx
+.gitignore
+.gitattributes
+eslint.config.js
+index.html
+package-lock.json
+package.json
+README.md
+vite.config.js
+```
