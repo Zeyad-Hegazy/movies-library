@@ -1,7 +1,7 @@
 import styles from "../css/nav.module.css";
 import { useTmdb } from "../context/TmdbProvider";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Nav = () => {
 	const { searchMovies } = useTmdb();
@@ -30,6 +30,12 @@ const Nav = () => {
 					/>
 					<button type="submit">Search</button>
 				</form>
+				<Link to="/watchlist" className={styles["watchlist-button"]}>
+					Watchlist
+				</Link>
+				<button className={styles["home-button"]} onClick={() => navigate("/")}>
+					Home
+				</button>
 			</div>
 		</div>
 	);
