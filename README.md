@@ -1,6 +1,6 @@
-# Movie Search Application
+# Movie Library Application
 
-This project is a Movie Search Application built with React, utilizing TMDB API for movie data. Users can search for movies, view search results, and manage a watchlist. The application is styled with CSS modules and includes navigation features for easy browsing.
+This project is a Movie library Application built with React, utilizing TMDB API for movie data. Users can search for movies, view search results, and manage a watchlist. The application is styled with CSS modules and includes navigation features for easy browsing.
 
 ## Table of Contents
 
